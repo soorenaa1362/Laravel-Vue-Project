@@ -1,6 +1,8 @@
 import auth from '@/middleware/auth';
 import guest from '@/middleware/guest';
+import admin from '@/middleware/admin';
 import NotFound from "@/views/errors/NotFound";
+import AccessDenied from "@/views/errors/AccessDenied";
 
 const Dashboard = () => import(/* webpackChunkName: "js/chunks/dashboards" */ '../views/Dashboard/DashboardRoutes.vue');
 const Home = () => import(/* webpackChunkName: "js/chunks/home" */ '../views/Home.vue');
@@ -78,13 +80,18 @@ export default [
             }
         ],
         meta: {
-            middleware: [auth]
+            middleware: [auth, admin]
         }
     },
     {
         path: '/not-found',
         name: 'not-found',
         component: NotFound
+    },
+    {
+        path: '/access-denied',
+        name: 'access-denied',
+        component: AccessDenied
     },
     {
         path: '*',

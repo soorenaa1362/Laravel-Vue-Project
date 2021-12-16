@@ -13,4 +13,7 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 
-Route::get('admin/users', [UserController::class, 'index']);
+Route::middleware(['auth:api', 'admin'])->prefix('admin')->group(function(){
+    Route::get('users', [UserController::class, 'index']);
+});
+
