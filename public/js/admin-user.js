@@ -70,6 +70,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
   metaInfo: {
@@ -179,7 +181,33 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.created_at))]),
                   _vm._v(" "),
-                  _vm._m(1, true),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-info btn-sm",
+                          attrs: {
+                            to: {
+                              name: "admin-users-edit",
+                              params: { url: "edit", id: user.id },
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    ویرایش\n                                "
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-danger btn-sm" }, [
+                        _vm._v("حذف"),
+                      ]),
+                    ],
+                    1
+                  ),
                 ])
               }),
               0
@@ -207,16 +235,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("تاریخ ساخت حساب")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-info btn-sm" }, [_vm._v("ویرایش")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger btn-sm" }, [_vm._v("حذف")]),
     ])
   },
 ]

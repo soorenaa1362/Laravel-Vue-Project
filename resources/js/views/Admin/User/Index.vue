@@ -28,7 +28,9 @@
                                 <td>{{ user.type }}</td>
                                 <td>{{ user.created_at }}</td>
                                 <td>
-                                    <button class="btn btn-info btn-sm">ویرایش</button>
+                                    <router-link :to="{ name: 'admin-users-edit', params: {url: 'edit', id: user.id} }" class="btn btn-info btn-sm">
+                                        ویرایش
+                                    </router-link>
                                     <button class="btn btn-danger btn-sm">حذف</button>
                                 </td>
                             </tr>

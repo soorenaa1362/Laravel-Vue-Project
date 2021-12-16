@@ -70031,7 +70031,11 @@ var AdminUserRoutes = function AdminUserRoutes() {
     path: 'user/:url',
     name: 'admin-users',
     component: AdminUserRoutes,
-    props: true
+    props: true,
+    children: [{
+      path: ':id',
+      name: 'admin-users-edit'
+    }]
   }],
   meta: {
     middleware: [_middleware_auth__WEBPACK_IMPORTED_MODULE_0__["default"], _middleware_admin__WEBPACK_IMPORTED_MODULE_2__["default"]]

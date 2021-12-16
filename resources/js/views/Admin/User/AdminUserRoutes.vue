@@ -5,6 +5,7 @@
 <script>
     import Index from "./Index.vue";
     import Create from "./Create.vue";
+    import Edit from "./Edit.vue";
     import NotFound from '@/views/errors/NotFound';
 
     export default {
@@ -13,7 +14,7 @@
         props: ['url'],
 
         components: {
-            Index, Create, NotFound
+            Index, Create, Edit, NotFound
         },
 
         computed: {

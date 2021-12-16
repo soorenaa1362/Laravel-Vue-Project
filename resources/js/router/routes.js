@@ -76,7 +76,13 @@ export default [
                 path: 'user/:url',
                 name: 'admin-users',
                 component: AdminUserRoutes,
-                props: true
+                props: true,
+                children: [
+                    {
+                        path: ':id',
+                        name: 'admin-users-edit'
+                    }
+                ]
             }
         ],
         meta: {

@@ -2,11 +2,11 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary d-flex justify-content-between">
-                <h4 class="card-title pt-2">ایجاد کاربر جدید</h4>
+                <h4 class="card-title pt-2">ویرایش کاربر {{ form.name }}</h4>
                 <router-link :to="{ name: 'admin-user' }" class="btn btn-outline-primary text-white"> بازگشت <i class="fa fa-arrow-left"></i></router-link>
             </div>
             <div class="card-body">
-                <form @submit.prevent="storeUser">
+                <form @submit.prevent="updateUser">
                     <base-input label="نام"
                                 name="name"
                                 v-model="form.name"
@@ -30,40 +30,46 @@
             </div>
         </div>
     </div>
-</template>
+</template>>
 
 <script>
-    import { Form } from 'vform';
+import { Form } from 'vform';
 
-    export default {
-        name: "Create",
+export default {
+    name: "Edit",
 
-        metaInfo: {
-            title: 'ایجاد کاربر جدید'
-        },
+    metaInfo: {
+        title: 'ویرایش کاربر'
+    }, 
 
-        data() {
-            return {
-                form: new Form({
-                    name: null,
-                    email: null,
-                    password: 'password',
-                    is_admin: false
-                })
-            }
-        },
+    data(){
+        return {
+            form: new Form({})
+        }
+    },
 
-        methods: {
-            storeUser() {
-                this.form.post('/api/admin/users', this.form)
-                    .then(() => {
-                        this.$router.push({ name: 'admin-user' })
-                    })
-            }
-        },
+    created(){
+        axios.get(`/api/admin/users/${this.$route.params.id}`)
+        .then(({data})=>{
+            this.form = new Form({
+                id: data.id,
+                name: data.name,
+                email: data.email,
+                password: null,
+                is_admin: !! data.is_admin
+            });
+        });
+    },
+
+    methods: {
+        updateUser(){
+
+        }
     }
+
+}
 </script>
 
-<style scoped>
+<style>
 
 </style>
