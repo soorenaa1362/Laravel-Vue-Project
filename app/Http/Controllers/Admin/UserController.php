@@ -53,9 +53,14 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $data = $request->validated();
+        if(is_null($data['password'])){
+            unset($data['password']);
+        }
+        $user->update($data);
+        return \response(['ok'], 200);
     }
 
     /**

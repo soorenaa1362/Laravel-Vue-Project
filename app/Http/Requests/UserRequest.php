@@ -23,14 +23,20 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:255|string',
-
-            'email' => 'required|max:255|email|unique:users,email',
-            
-            'password' => 'required',
-
-            'is_admin' => 'nullable',
-        ];
+        if (request()->method === 'POST' && request()->method === 'post'){
+            return [
+                'name' => 'required|max:255|string', 
+                'email' => 'required|max:255|email|unique:users,email', 
+                'password' => 'required',   
+                'is_admin' => 'nullable',
+            ];
+        }else{
+            return [
+                'name' => 'required|max:255|string',  
+                'email' => 'required|max:255|email|unique:users,email,'. request('id'),
+                'password' => 'nullable',    
+                'is_admin' => 'nullable',
+            ];
+        }
     }
 }

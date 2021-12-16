@@ -171,10 +171,15 @@ __webpack_require__.r(__webpack_exports__);
       form: new vform__WEBPACK_IMPORTED_MODULE_0__["Form"]({})
     };
   },
+  computed: {
+    url: function url() {
+      return "/api/admin/users/".concat(this.$route.params.id);
+    }
+  },
   created: function created() {
     var _this = this;
 
-    axios.get("/api/admin/users/".concat(this.$route.params.id)).then(function (_ref) {
+    axios.get(this.url).then(function (_ref) {
       var data = _ref.data;
       _this.form = new vform__WEBPACK_IMPORTED_MODULE_0__["Form"]({
         id: data.id,
@@ -186,7 +191,18 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    updateUser: function updateUser() {}
+    updateUser: function updateUser() {
+      var _this2 = this;
+
+      this.form.patch(this.url, this.form).then(function (data) {
+        _this2.$router.push({
+          name: 'admin-user'
+        });
+      }); // this.form.patch(this.url, this.form)
+      // .then((data)=>{
+      //     this.$router.push({name: 'admin-user'})
+      // });
+    }
   }
 });
 

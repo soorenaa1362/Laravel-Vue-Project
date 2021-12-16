@@ -48,8 +48,13 @@ export default {
         }
     },
 
+    computed: {
+        url(){
+            return `/api/admin/users/${this.$route.params.id}`;
+        }
+    },
     created(){
-        axios.get(`/api/admin/users/${this.$route.params.id}`)
+        axios.get(this.url)
         .then(({data})=>{
             this.form = new Form({
                 id: data.id,
@@ -63,7 +68,14 @@ export default {
 
     methods: {
         updateUser(){
-
+            this.form.patch(this.url, this.form)
+            .then((data)=>{
+                this.$router.push({name: 'admin-user'})
+            }); 
+            // this.form.patch(this.url, this.form)
+            // .then((data)=>{
+            //     this.$router.push({name: 'admin-user'})
+            // });
         }
     }
 
