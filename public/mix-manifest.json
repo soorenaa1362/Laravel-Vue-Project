@@ -10,5 +10,6 @@
     "/js/chunks/dashboard.js": "/js/chunks/dashboard.js",
     "/js/chunks/dashboards.js": "/js/chunks/dashboards.js",
     "/js/chunks/home.js": "/js/chunks/home.js",
-    "/js/dashboard.js": "/js/dashboard.js"
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/admin-user~js/admin-users.js": "/js/admin-user~js/admin-users.js"
 }

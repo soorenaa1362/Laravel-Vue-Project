@@ -21,7 +21,7 @@
                         </tr>
                         </thead>
                         <tbody class="text-primary">
-                            <tr v-for="user in users" :key="user.id">
+                            <tr v-for="(user, index) in users" :key="user.id">
                                 <td>{{ user.id }}</td>
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
@@ -31,7 +31,9 @@
                                     <router-link :to="{ name: 'admin-users-edit', params: {url: 'edit', id: user.id} }" class="btn btn-info btn-sm">
                                         ویرایش
                                     </router-link>
-                                    <button class="btn btn-danger btn-sm">حذف</button>
+                                    <button class="btn btn-danger btn-sm" @click="deleteUser(user.id, index)">
+                                        حذف
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -61,6 +63,15 @@
                 .then(({data}) => {
                     this.users = data.data
                 })
+        },
+
+        methods: {
+            deleteUser(id, index){
+                axios.delete(`/api/admin/users/${id}`)
+                .then((data)=>{
+                    this.users.splice(index, 1);
+                });
+            }
         }
 
     }

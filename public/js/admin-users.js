@@ -261,6 +261,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
   metaInfo: {
@@ -278,6 +280,15 @@ __webpack_require__.r(__webpack_exports__);
       var data = _ref.data;
       _this.users = data.data;
     });
+  },
+  methods: {
+    deleteUser: function deleteUser(id, index) {
+      var _this2 = this;
+
+      axios["delete"]("/api/admin/users/".concat(id)).then(function (data) {
+        _this2.users.splice(index, 1);
+      });
+    }
   }
 });
 
@@ -584,7 +595,7 @@ var render = function () {
             _c(
               "tbody",
               { staticClass: "text-primary" },
-              _vm._l(_vm.users, function (user) {
+              _vm._l(_vm.users, function (user, index) {
                 return _c("tr", { key: user.id }, [
                   _c("td", [_vm._v(_vm._s(user.id))]),
                   _vm._v(" "),
@@ -617,9 +628,22 @@ var render = function () {
                         ]
                       ),
                       _vm._v(" "),
-                      _c("button", { staticClass: "btn btn-danger btn-sm" }, [
-                        _vm._v("حذف"),
-                      ]),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          on: {
+                            click: function ($event) {
+                              return _vm.deleteUser(user.id, index)
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    حذف\n                                "
+                          ),
+                        ]
+                      ),
                     ],
                     1
                   ),
