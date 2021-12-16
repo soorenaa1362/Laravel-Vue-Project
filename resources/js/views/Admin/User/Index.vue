@@ -1,19 +1,23 @@
 <template>
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title ">لیست کاربران سایت</h4>
+            <div class="card-header card-header-primary d-flex justify-content-between">
+                <h4 class="card-title pt-2">لیست کاربران سایت</h4>
+                <router-link :to="{ name: 'admin-users', params: {url: 'create'} }" class="btn btn-info"> 
+                    <i class="fa fa-user-plus"></i>
+                    کاربر جدید
+                </router-link>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="text-primary">
                         <tr>
-                           <th>#</th> 
-                           <th>نام</th>
-                           <th>ایمیل</th>
-                           <th>نوع حساب کاربری</th>
-                           <th>تاریخ ساخت حساب</th>
+                            <th>#</th> 
+                            <th>نام</th>
+                            <th>ایمیل</th>
+                            <th>نوع حساب کاربری</th>
+                            <th>تاریخ ساخت حساب</th>
                         </tr>
                         </thead>
                         <tbody class="text-primary">

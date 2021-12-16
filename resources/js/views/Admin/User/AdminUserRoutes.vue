@@ -4,6 +4,7 @@
 
 <script>
     import Index from "./Index.vue";
+    import Create from "./Create.vue";
     import NotFound from '@/views/errors/NotFound';
 
     export default {
@@ -12,12 +13,12 @@
         props: ['url'],
 
         components: {
-            Index, NotFound
+            Index, Create, NotFound
         },
 
         computed: {
             componentName() {
-                return ['login', 'register'].includes(this.url) ? this.url : 'not-found'
+                return ['create', 'edit'].includes(this.url) ? this.url : 'not-found'
             }
         }
     }

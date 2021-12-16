@@ -66,6 +66,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
   metaInfo: {
@@ -129,12 +133,36 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-12" }, [
     _c("div", { staticClass: "card" }, [
-      _vm._m(0),
+      _c(
+        "div",
+        {
+          staticClass:
+            "card-header card-header-primary d-flex justify-content-between",
+        },
+        [
+          _c("h4", { staticClass: "card-title pt-2" }, [
+            _vm._v("لیست کاربران سایت"),
+          ]),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-info",
+              attrs: { to: { name: "admin-users", params: { url: "create" } } },
+            },
+            [
+              _c("i", { staticClass: "fa fa-user-plus" }),
+              _vm._v("\n                کاربر جدید\n            "),
+            ]
+          ),
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("div", { staticClass: "table-responsive" }, [
           _c("table", { staticClass: "table" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -151,7 +179,7 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.created_at))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _vm._m(1, true),
                 ])
               }),
               0
@@ -163,14 +191,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header card-header-primary" }, [
-      _c("h4", { staticClass: "card-title " }, [_vm._v("لیست کاربران سایت")]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

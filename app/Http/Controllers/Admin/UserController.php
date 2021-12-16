@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+// use Illuminate\Http\Response;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserCollection;
 
@@ -26,18 +28,19 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\UserRequest  $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        User::create($request->validated());
+        return response('ok', 200);
     }
 
     /**

@@ -73,7 +73,7 @@ export default [
                 component: AdminUser
             },
             {
-                path: '/user/:url',
+                path: 'user/:url',
                 name: 'admin-users',
                 component: AdminUserRoutes,
                 props: true
